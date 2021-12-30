@@ -1,63 +1,63 @@
-//// CSS Variable
-:root {
-    --primary-color: #F4F1DE;
-    --secondary-color: #F2CC8F;
-    --text-color: #E07A5F;
+//// Mixin
+// simple mixin
+@mixin inline-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
+        display: inline-block;
+    }
 }
 
-//// SCSS Variable
-$primaryColor: #F4F1DE;
-$secondaryColor: #F2CC8F;
-$textColor: #E07A5F;
-
-//// CSS
-body {
-    background-color: var(--primary-color);
+.main{
+    #{&}-list{
+        ul{
+            @include inline-list();
+            li {
+                background-color: black;
+                padding: 0.7em;
+                a{
+                    color: white;
+                }
+            }
+            
+        }
+    }
 }
 
-h1 {
-    color: var(--text-color);
+.footer{
+    #{&}-list{
+        ul{
+            @include inline-list();
+            li{
+                background-color: salmon;
+                padding: 0.7em;
+                color: white;
+            }
+            
+        }
+    }
 }
 
-//// SCSS
-body {
-    background-color: var($primaryColor);
+
+//// mixin arguments
+@mixin flex-box($direction: row, $space: center){
+    display: flex;
+    justify-content: $space;
+    align-items: center;
+    flex-direction: $direction;
 }
 
-h1 {
-    color: var($textColor);
-}
-
-//// SCSS Behavior
-// No 1 ( '-' == '_' )
-
-$primary-Color: #F4F1DE;
-body {
-    background-color: var($primary_Color);
-}
-
-// No 2 (Scope)
-body {
-    $primary-Color: #F4F1DE;
-    $textColor: #E07A5F; // Local Variable
-    background-color: var($primary_Color);
-}
-
-h1 {
-    color: var($textColor); // Cannot access Local Variable
-}
-// --- Solution ---
-body {
-    $textColor: #E07A5F !global; // Global Variable
-}
-
-// No 3 (Mapping)
-$alert: (
-    'danger': red,
-    'success': green,
-    'warning': orange
-);
-
-h1 {
-    color: map-get($alert, 'success');
+.box-container {
+    @include flex-box(row-reverse, space-around);
+    width: 600px;
+    height: 400px;
+    background-color: #eaeaea;
+    .box {
+        width: 60px;
+        height: 60px;
+        background: #bada55;
+        text-align: center;
+        line-height: 60px;
+    }
 }
