@@ -1,0 +1,50 @@
+//// Variable
+$myColor: salmon;
+
+//// Nesting
+.main {
+    background-color: lightblue;
+    .main-heading{
+        font-size: 2em;
+    }
+    .main-paragraph{
+        font-size: 1.4em;
+    }
+}
+
+.main, footer{
+    h1, p{
+        letter-spacing: 1px;
+    }
+}
+
+//// Parent Selector
+.main{
+    .container & {
+        background-color: lightblue;
+    }
+
+    &:hover{
+        background-color: salmon;
+    }
+}
+
+//// Refactoring
+.main {
+    & &-heading{
+        font-size: 2em;
+    }
+    & &-paragraph{
+        font-size: 1.4em;
+    }
+}
+
+//// Interpolation
+.footer{
+    #{&}-heading{
+        font-size:2em;
+    }
+    #{&}-paragraph{
+        font-size:1.4em;
+    }
+}
