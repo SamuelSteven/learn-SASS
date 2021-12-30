@@ -1,63 +1,13 @@
-//// Mixin
-// simple mixin
-@mixin inline-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li{
-        display: inline-block;
-    }
-}
+//// modules
+// @import
 
-.main{
-    #{&}-list{
-        ul{
-            @include inline-list();
-            li {
-                background-color: black;
-                padding: 0.7em;
-                a{
-                    color: white;
-                }
-            }
-            
-        }
-    }
-}
+// @import 'modules/mixin';
+// @import 'modules/main';
+// @import 'modules/footer';
+// @import 'modules/boxContainer';
 
-.footer{
-    #{&}-list{
-        ul{
-            @include inline-list();
-            li{
-                background-color: salmon;
-                padding: 0.7em;
-                color: white;
-            }
-            
-        }
-    }
-}
+// @mixin
+@use 'modules/main';
+@use 'modules/footer';
+@use 'modules/boxContainer';
 
-
-//// mixin arguments
-@mixin flex-box($direction: row, $space: center){
-    display: flex;
-    justify-content: $space;
-    align-items: center;
-    flex-direction: $direction;
-}
-
-.box-container {
-    @include flex-box(row-reverse, space-around);
-    width: 600px;
-    height: 400px;
-    background-color: #eaeaea;
-    .box {
-        width: 60px;
-        height: 60px;
-        background: #bada55;
-        text-align: center;
-        line-height: 60px;
-    }
-}

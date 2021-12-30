@@ -3,16 +3,13 @@
   padding: 0;
   list-style: none;
 }
-
 .main .main-list ul li {
   display: inline-block;
 }
-
 .main .main-list ul li {
   background-color: black;
   padding: 0.7em;
 }
-
 .main .main-list ul li a {
   color: white;
 }
@@ -22,11 +19,9 @@
   padding: 0;
   list-style: none;
 }
-
 .footer .footer-list ul li {
   display: inline-block;
 }
-
 .footer .footer-list ul li {
   background-color: salmon;
   padding: 0.7em;
@@ -34,23 +29,14 @@
 }
 
 .box-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row-reverse;
   width: 600px;
   height: 400px;
   background-color: #eaeaea;
 }
-
 .box-container .box {
   width: 60px;
   height: 60px;
@@ -58,4 +44,5 @@
   text-align: center;
   line-height: 60px;
 }
+
 /*# sourceMappingURL=main.css.map */
