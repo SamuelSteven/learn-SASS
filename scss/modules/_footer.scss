@@ -1,0 +1,15 @@
+// footer
+@use 'mixin';
+.footer{
+    #{&}-list{
+        ul{
+            @include mixin.inline-list();
+            li{
+                background-color: salmon;
+                padding: 0.7em;
+                color: white;
+            }
+            
+        }
+    }
+}
