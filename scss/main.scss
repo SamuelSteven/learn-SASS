@@ -1,50 +1,63 @@
-//// Variable
-$myColor: salmon;
-
-//// Nesting
-.main {
-    background-color: lightblue;
-    .main-heading{
-        font-size: 2em;
-    }
-    .main-paragraph{
-        font-size: 1.4em;
-    }
+//// CSS Variable
+:root {
+    --primary-color: #F4F1DE;
+    --secondary-color: #F2CC8F;
+    --text-color: #E07A5F;
 }
 
-.main, footer{
-    h1, p{
-        letter-spacing: 1px;
-    }
+//// SCSS Variable
+$primaryColor: #F4F1DE;
+$secondaryColor: #F2CC8F;
+$textColor: #E07A5F;
+
+//// CSS
+body {
+    background-color: var(--primary-color);
 }
 
-//// Parent Selector
-.main{
-    .container & {
-        background-color: lightblue;
-    }
-
-    &:hover{
-        background-color: salmon;
-    }
+h1 {
+    color: var(--text-color);
 }
 
-//// Refactoring
-.main {
-    & &-heading{
-        font-size: 2em;
-    }
-    & &-paragraph{
-        font-size: 1.4em;
-    }
+//// SCSS
+body {
+    background-color: var($primaryColor);
 }
 
-//// Interpolation
-.footer{
-    #{&}-heading{
-        font-size:2em;
-    }
-    #{&}-paragraph{
-        font-size:1.4em;
-    }
+h1 {
+    color: var($textColor);
+}
+
+//// SCSS Behavior
+// No 1 ( '-' == '_' )
+
+$primary-Color: #F4F1DE;
+body {
+    background-color: var($primary_Color);
+}
+
+// No 2 (Scope)
+body {
+    $primary-Color: #F4F1DE;
+    $textColor: #E07A5F; // Local Variable
+    background-color: var($primary_Color);
+}
+
+h1 {
+    color: var($textColor); // Cannot access Local Variable
+}
+// --- Solution ---
+body {
+    $textColor: #E07A5F !global; // Global Variable
+}
+
+// No 3 (Mapping)
+$alert: (
+    'danger': red,
+    'success': green,
+    'warning': orange
+);
+
+h1 {
+    color: map-get($alert, 'success');
 }
